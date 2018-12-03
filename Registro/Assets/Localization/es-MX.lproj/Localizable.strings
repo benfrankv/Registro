@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  Registro
+
+  Created by Ben Frank V. on 11/29/18.
+  Copyright © 2018 Ben Frank V. All rights reserved.
+*/
+"Saludo" = "Hola";
+"registry" = "Registro";
+"data" = "Datos";
+"name" = "Nombre";
+"firstSurname" = "Apellido paterno";
+"secondSurname" = "Apellido materno";
+"email" = "Correo electrónico";
+"cellphone" = "Número de celular";
+
+//Validations
+"validations.lettersAndSpaces" = "solo acepta letras y espacios.";
+"validations.emptyFieldLbO" = "no puede ir vacío.";
+"validations.emptyFieldLbA" = "no puede ir vacía.";
+"validations.numsAndLetter" = "es inválida, debe tener de 8 a 13 números y/o letras.";
+"validations.phone" = "es inválido, debe tener de 8 a 13 dígitos.";
+"validations.email" = "ingresado no es una dirección válida.";
+"validations.password" = "no cumple con la especificación de contraseña.";
+"validations.emailFormat" = "Formato de email invalido";
+"validations.formatInvalidLb" = "Formato incorrecto";
+"validations.emptyFieldLb" = "Campo vacío";
+"alert.updateForms" = "Te has registrado correctamente";
