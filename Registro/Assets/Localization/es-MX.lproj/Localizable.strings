@@ -13,8 +13,15 @@
 "secondSurname" = "Apellido materno";
 "email" = "Correo electrónico";
 "cellphone" = "Número de celular";
+"pickAImage" = "Selecciona una imágen";
+"users" = "Usuarios";
 
 //Validations
+"validations.thename" = "El nombre";
+"validations.thefirstSurname" = "El apellido paterno";
+"validations.thesecondSurname" = "El apellido materno";
+"validations.theemail" = "El correo electrónico";
+"validations.thecellphone" = "El número de celular";
 "validations.lettersAndSpaces" = "solo acepta letras y espacios.";
 "validations.emptyFieldLbO" = "no puede ir vacío.";
 "validations.emptyFieldLbA" = "no puede ir vacía.";

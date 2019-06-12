@@ -21,6 +21,7 @@ class UserDataDAO {
         newUserData.setValue(userData.secondSurname, forKey: "secondSurname")
         newUserData.setValue(userData.email, forKey: "email")
         newUserData.setValue(userData.cellphone, forKey: "cellphone")
+        newUserData.setValue(userData.photo, forKey: "photo")
         
         do{
             try context.save()
@@ -50,7 +51,7 @@ class UserDataDAO {
                     userData.secondSurname = (r.value(forKey: "secondSurname") as? String)!
                     userData.email = (r.value(forKey: "email") as? String)!
                     userData.cellphone = (r.value(forKey: "cellphone") as? String)!
-
+                    userData.photo = (r.value(forKey: "photo") as? Data)
                     
                     userDataList.append(userData)
                 }

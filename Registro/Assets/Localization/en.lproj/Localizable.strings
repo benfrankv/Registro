@@ -13,16 +13,23 @@
 "secondSurname" = "Second surname";
 "email" = "Email";
 "cellphone" = "Cellphone";
+"pickAImage" = "Select a Picture";
+"users" = "Users";
 
 //Validations
-"validations.lettersAndSpaces" = "solo acepta letras y espacios.";
-"validations.emptyFieldLbO" = "no puede ir vacío.";
-"validations.emptyFieldLbA" = "no puede ir vacía.";
-"validations.numsAndLetter" = "es inválida, debe tener de 8 a 13 números y/o letras.";
-"validations.phone" = "es inválido, debe tener de 8 a 13 dígitos.";
-"validations.email" = "ingresado no es una dirección válida.";
+"validations.thename" = "The Name";
+"validations.thefirstSurname" = "The first surname";
+"validations.thesecondSurname" = "The second surname";
+"validations.theemail" = "The email";
+"validations.thecellphone" = "The cellphone";
+"validations.lettersAndSpaces" = "only letters or spaces.";
+"validations.emptyFieldLbO" = "field can not be blank.";
+"validations.emptyFieldLbA" = "field can not be blank.";
+"validations.numsAndLetter" = "invalid, must have 8 a 13 numbers &/or letters.";
+"validations.phone" = "invalid, must have 8 a 13 digit.";
+"validations.email" = "enthered is not a valid email address.";
 "validations.password" = "no cumple con la especificación de contraseña.";
-"validations.emailFormat" = "Formato de email invalido";
-"validations.formatInvalidLb" = "Formato incorrecto";
-"validations.emptyFieldLb" = "Campo vacío";
-"alert.updateForms" = "Te has registrado correctamente";
+"validations.emailFormat" = "Invalid email format";
+"validations.formatInvalidLb" = "Incorrect format";
+"validations.emptyFieldLb" = "Empty Field";
+"alert.updateForms" = "You have successfully registered.";

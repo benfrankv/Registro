@@ -16,6 +16,7 @@ class UserDataEntity {
     var secondSurname: String!
     var email: String!
     var cellphone: String!
+    var photo: Data?
     
     required init(userData: [String: Any]) {
         
@@ -24,6 +25,7 @@ class UserDataEntity {
         self.secondSurname = userData ["secondSurname"] as? String
         self.email = userData ["email"] as? String
         self.cellphone = userData ["cellphone"] as? String
+        self.photo = userData ["photo"] as? Data
         
     }
     

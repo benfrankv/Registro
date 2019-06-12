@@ -42,7 +42,7 @@ class DataVC: UIViewController {
     }
     
     @IBAction func Tobegin(_ sender: Any) {
-        UserDataDAO.cleanCoreData(delegate)
+//        UserDataDAO.cleanCoreData(delegate)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nav = storyboard.instantiateViewController(withIdentifier: "begin") as!UINavigationController
         let appDelegate = UIApplication.shared.delegate as! AppDelegate

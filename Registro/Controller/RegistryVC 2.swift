@@ -10,7 +10,7 @@ import UIKit
 import SkyFloatingLabelTextField
 import SCLAlertView
 
-class RegistryVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class RegistryVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate {
     
 
     @IBOutlet weak var txtfld_Name: SkyFloatingLabelTextField!
@@ -25,40 +25,26 @@ class RegistryVC: UIViewController, UITextFieldDelegate, UIImagePickerController
     @IBOutlet weak var lbl_Cellphone: UILabel!
     @IBOutlet weak var btn_PickGallery: UIButton!
     @IBOutlet weak var PP_Photo: UIImageView!
-    @IBOutlet weak var nameBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var firstSurnameBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var secondSurnameBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var emailBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var cellphoneBottomConstraint: NSLayoutConstraint!
+    
     
     var delegate = AppDelegate()
     var valid = Validations()
     var formUser = [[String: Any]]()
     let load = Loading()
-    var imgpkr_Object = UIImagePickerController()
-    var dataIMG: Data? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
         title = "registry".localized
         addTheme()
         delegateTextField()
         placeholder()
-        imgpkr_Object.delegate = self
-//        NotificationCenter.default.addObserver(self, selector: #selector(RegistryVC.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(RegistryVC.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-//    }
-    
-    
     
     func addTheme() {
         applySkyscannerTheme(SkyFloatingLabelTxtfld: txtfld_Name)
@@ -103,8 +89,8 @@ class RegistryVC: UIViewController, UITextFieldDelegate, UIImagePickerController
         }
     }
     
-    func fieldValidate(_ caso : Int16,_ alert : Bool) -> Bool{
-        var validation = false
+    func validaCampo(_ caso : Int16,_ alert : Bool) -> Bool{
+        var validacion = false
         switch caso {
          //Sólo un Idioma 
         case 1:
@@ -112,15 +98,15 @@ class RegistryVC: UIViewController, UITextFieldDelegate, UIImagePickerController
             if valid.validaNombre(valid.acentos(palabra: txtfld_Name.text!)) {
                 self.lbl_Name.text = ""
                 txtfld_Name.errorMessage = nil
-                validation = true
+                validacion = true
             }else if txtfld_Name.text! == "" {
-                self.lbl_Name.text = "\("validations.thename".localized) \("val idations.emptyFieldLbO".localized)"
+                self.lbl_Name.text = "El nombre \("validations.emptyFieldLbO".localized)"
                 txtfld_Name.errorMessage = nil
-                validation = false
+                validacion = false
             }else{
                 validateTextFieldWithText(text: txtfld_Name.text, tf: txtfld_Name, nameTF: "name".localized)
-                self.lbl_Name.text = "\("validations.thename".localized) \("validations.lettersAndSpaces".localized)"
-                validation = false
+                self.lbl_Name.text = "El nombre \("validations.lettersAndSpaces".localized)"
+                validacion = false
             }
             
         case 2:
@@ -128,15 +114,15 @@ class RegistryVC: UIViewController, UITextFieldDelegate, UIImagePickerController
             if valid.validaApellido(valid.acentos(palabra: txtfld_FirstSurname.text!)) {
                 self.lbl_FirstSurname.text = ""
                 txtfld_FirstSurname.errorMessage = nil
-                validation = true
+                validacion = true
             }else if txtfld_FirstSurname.text! == "" {
-                self.lbl_FirstSurname.text = "\("validations.thefirstSurname".localized) \("validations.emptyFieldLbO".localized)"
+                self.lbl_FirstSurname.text = "El apellido paterno \("validations.emptyFieldLbO".localized)"
                 txtfld_FirstSurname.errorMessage = nil
-                validation = false
+                validacion = false
             }else {
                 validateTextFieldWithText(text: txtfld_FirstSurname.text, tf: txtfld_FirstSurname, nameTF: "firstSurname".localized)
-                self.lbl_FirstSurname.text = "\("validations.thefirstSurname".localized) \("validations.lettersAndSpaces".localized)"
-                validation = false
+                self.lbl_FirstSurname.text = "El apellido paterno \("validations.lettersAndSpaces".localized)"
+                validacion = false
             }
             
         case 3:
@@ -144,15 +130,15 @@ class RegistryVC: UIViewController, UITextFieldDelegate, UIImagePickerController
             if valid.validaApellido(valid.acentos(palabra: txtfld_SecondSurname.text!)) {
                 self.lbl_SecondSurname.text = ""
                 txtfld_SecondSurname.errorMessage = nil
-                validation = true
+                validacion = true
             }else if txtfld_SecondSurname.text! == "" {
-                self.lbl_SecondSurname.text = "\("validations.thesecondSurname".localized) \("validations.emptyFieldLbO".localized)"
+                self.lbl_SecondSurname.text = "El apellido materno \("validations.emptyFieldLbO".localized)"
                 txtfld_SecondSurname.errorMessage = nil
-                validation = false
+                validacion = false
             }else {
                 validateTextFieldWithText(text: txtfld_SecondSurname.text, tf: txtfld_SecondSurname, nameTF: "secondSurname".localized)
-                self.lbl_SecondSurname.text = "\("validations.thesecondSurname".localized) \("validations.lettersAndSpaces".localized)"
-                validation = false
+                self.lbl_SecondSurname.text = "El apellido materno \("validations.lettersAndSpaces".localized)"
+                validacion = false
             }
             
         case 4:
@@ -160,15 +146,15 @@ class RegistryVC: UIViewController, UITextFieldDelegate, UIImagePickerController
             if valid.validaTelefono(txtfld_Cellphone.text!) {
                 self.lbl_Cellphone.text = ""
                 txtfld_Cellphone.errorMessage = nil
-                validation = true
+                validacion = true
             }else if txtfld_Cellphone.text! == "" {
-                self.lbl_Cellphone.text = "\("validations.thecellphone".localized) \("validations.emptyFieldLbO".localized)"
+                self.lbl_Cellphone.text = "El teléfono \("validations.emptyFieldLbO".localized)"
                 txtfld_Cellphone.errorMessage = nil
-                validation = false
+                validacion = false
             }else {
                 validateTextFieldWithText(text: txtfld_Cellphone.text, tf: txtfld_Cellphone, nameTF: "cellphone".localized)
-                self.lbl_Cellphone.text = "\("validations.thecellphone".localized) \("validations.emptyFieldLbO".localized)"
-                validation = false
+                self.lbl_Cellphone.text = "El teléfono \("validations.phone".localized)"
+                validacion = false
             }
             
         case 5:
@@ -176,38 +162,38 @@ class RegistryVC: UIViewController, UITextFieldDelegate, UIImagePickerController
             if valid.validaCorreo(txtfld_Email.text!) {
                 self.lbl_Email.text = ""
                 txtfld_Email.errorMessage = nil
-                validation = true
+                validacion = true
             }else if txtfld_Email.text! == "" {
-                self.lbl_Email.text = "\("validations.theemail".localized) \("validations.emptyFieldLbO".localized)"
+                self.lbl_Email.text = "El correo electrónico \("validations.emptyFieldLbO".localized)"
                 txtfld_Email.errorMessage = nil
-                validation = false
+                validacion = false
             }else {
                 validateTextFieldWithText(text: txtfld_Email.text, tf: txtfld_Email, nameTF: "email".localized)
-                self.lbl_Email.text = "\("validations.theemail".localized) \("validations.emptyFieldLbO".localized)"
-                validation = false
+                self.lbl_Email.text = "El correo electrónico \("validations.email".localized)"
+                validacion = false
             }
             
         default:
-            validation = false
+            validacion = false
         }
-        return validation
+        return validacion
     }
     
     @IBAction func Registry(_ sender: UIButton) {
         view.endEditing(true)
         
         for a in 1...5{
-            _ = fieldValidate(Int16(a),false)
+            _ = validaCampo(Int16(a),false)
         }//revisar repetición
         
         for a in 1...5{
-            if(fieldValidate(Int16(a),false) == false){
+            if(validaCampo(Int16(a),false) == false){
                 _ = valid.alertError("alert.requiredFields".localized)
                 break
             }
-            if(fieldValidate(Int16(a),false) == true && a == 5){
+            if(validaCampo(Int16(a),false) == true && a == 5){
                 let wait = load.loading("Guardando")
-                formUser = [["name": txtfld_Name.text!, "firstSurname": txtfld_FirstSurname.text!, "secondSurname": txtfld_SecondSurname.text!, "email": txtfld_Email.text!, "cellphone": txtfld_Cellphone.text!, "photo": dataIMG == nil ? nil : dataIMG!]]
+                formUser = [["name": txtfld_Name.text!, "firstSurname": txtfld_FirstSurname.text!, "secondSurname": txtfld_SecondSurname.text!, "email": txtfld_Email.text!, "cellphone": txtfld_Cellphone.text!]]
                 for entity in formUser{
                     let user = UserDataEntity(userData: entity)
                     UserDataDAO.add(delegate, user)
@@ -220,19 +206,12 @@ class RegistryVC: UIViewController, UITextFieldDelegate, UIImagePickerController
         
     }
     
-    @IBAction func btna_PickGallery(_ sender: UIButton) {
-        imgpkr_Object.sourceType = .photoLibrary
-        imgpkr_Object.allowsEditing = true
-        present(imgpkr_Object, animated: true, completion: nil)
-    }
-    
     func placeholder() {
         txtfld_Name.placeholder = "name".localized
         txtfld_FirstSurname.placeholder = "firstSurname".localized
         txtfld_SecondSurname.placeholder = "secondSurname".localized
         txtfld_Email.placeholder = "email".localized
         txtfld_Cellphone.placeholder = "cellphone".localized
-        self.btn_PickGallery.setTitle("pickAImage".localized, for: .normal)
     }
     
     func delegateTextField() {
@@ -244,31 +223,23 @@ class RegistryVC: UIViewController, UITextFieldDelegate, UIImagePickerController
     }
     
     @IBAction func validName(_ sender: UITextField) {
-        _ = fieldValidate(1,true)
+        _ = validaCampo(1,true)
     }
     
     @IBAction func validFirstSurname(_ sender: UITextField) {
-        _ = fieldValidate(2,true)
+        _ = validaCampo(2,true)
     }
     
     @IBAction func validSecondSurname(_ sender: UITextField) {
-        _ = fieldValidate(3,true)
+        _ = validaCampo(3,true)
     }
     
     @IBAction func validCellphone(_ sender: UITextField) {
-        _ = fieldValidate(4,true)
+        _ = validaCampo(4,true)
     }
     
     @IBAction func validEmail(_ sender: UITextField) {
-        _ = fieldValidate(5,true)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
-            PP_Photo.image = image
-            dataIMG = UIImagePNGRepresentation(image)
-        }
-        dismiss(animated: true, completion: nil)
+        _ = validaCampo(5,true)
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -286,24 +257,13 @@ class RegistryVC: UIViewController, UITextFieldDelegate, UIImagePickerController
         view.endEditing(true)
     }
     /*
-    @objc func keyboardWillShow(notification:NSNotification) {
-        adjustingHeight(show: true, notification: notification)
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
     }
-    
-    @objc func keyboardWillHide(notification:NSNotification) {
-        adjustingHeight(show: false, notification: notification)
-    }
-    
-    func adjustingHeight(show: Bool, notification:NSNotification) {
-        var userInfo = notification.userInfo!
-        var keyboardFrame: CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-        let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as! TimeInterval
-        let changeInHeight = (keyboardFrame.height + 40) * (show ? 1 : -1)
-        UIView.animate(withDuration: animationDuration, animations: {() -> Void in
-            self.emailBottomConstraint.constant += changeInHeight
-            
-        })
-        
-    }*/
+    */
 
 }

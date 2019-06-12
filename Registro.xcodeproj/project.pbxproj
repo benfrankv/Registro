@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		206CB9D15E48B541EDDF2348 /* Pods_Registro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34FC5C279F897859C7CFD2E8 /* Pods_Registro.framework */; };
 		B541740621B1A5130016E972 /* Validations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B541740521B1A5130016E972 /* Validations.swift */; };
+		B55E8C4B22B044BF001C081C /* UsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55E8C4A22B044BF001C081C /* UsersVC.swift */; };
+		B55E8C4D22B04EC7001C081C /* UserTVCC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55E8C4C22B04EC7001C081C /* UserTVCC.swift */; };
 		B5B103E821B0AEAD003A056C /* RegistryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B103E721B0AEAD003A056C /* RegistryVC.swift */; };
 		B5C3A6CA21B0F67F006758D5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B5C3A6CC21B0F67F006758D5 /* Localizable.strings */; };
 		B5C3A6D521B0F9BA006758D5 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C3A6D421B0F9BA006758D5 /* StringExtension.swift */; };
@@ -18,7 +20,7 @@
 		B5E9259D21B1C90E0095815A /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E9259C21B1C90E0095815A /* Loading.swift */; };
 		B5E9259F21B1DEF70095815A /* DataVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E9259E21B1DEF70095815A /* DataVC.swift */; };
 		B5EA44B721AFACD800528AC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA44B621AFACD800528AC9 /* AppDelegate.swift */; };
-		B5EA44B921AFACD800528AC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA44B821AFACD800528AC9 /* ViewController.swift */; };
+		B5EA44B921AFACD800528AC9 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EA44B821AFACD800528AC9 /* MainVC.swift */; };
 		B5EA44BC21AFACD800528AC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5EA44BA21AFACD800528AC9 /* Main.storyboard */; };
 		B5EA44BF21AFACD800528AC9 /* Registro.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B5EA44BD21AFACD800528AC9 /* Registro.xcdatamodeld */; };
 		B5EA44C121AFACDA00528AC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5EA44C021AFACDA00528AC9 /* Assets.xcassets */; };
@@ -29,6 +31,8 @@
 		031D87174F443969601B81F4 /* Pods-Registro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Registro.release.xcconfig"; path = "Pods/Target Support Files/Pods-Registro/Pods-Registro.release.xcconfig"; sourceTree = "<group>"; };
 		34FC5C279F897859C7CFD2E8 /* Pods_Registro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Registro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B541740521B1A5130016E972 /* Validations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validations.swift; sourceTree = "<group>"; };
+		B55E8C4A22B044BF001C081C /* UsersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersVC.swift; sourceTree = "<group>"; };
+		B55E8C4C22B04EC7001C081C /* UserTVCC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTVCC.swift; sourceTree = "<group>"; };
 		B5B103E721B0AEAD003A056C /* RegistryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistryVC.swift; sourceTree = "<group>"; };
 		B5C3A6CB21B0F67F006758D5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B5C3A6D021B0F846006758D5 /* es-MX */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-MX"; path = "es-MX.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
@@ -42,7 +46,7 @@
 		B5E9259E21B1DEF70095815A /* DataVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataVC.swift; sourceTree = "<group>"; };
 		B5EA44B321AFACD800528AC9 /* Registro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Registro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EA44B621AFACD800528AC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B5EA44B821AFACD800528AC9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B5EA44B821AFACD800528AC9 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		B5EA44BB21AFACD800528AC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B5EA44BE21AFACD800528AC9 /* Registro.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Registro.xcdatamodel; sourceTree = "<group>"; };
 		B5EA44C021AFACDA00528AC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -91,9 +95,11 @@
 		B5C3A6C421B0F38B006758D5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B5EA44B821AFACD800528AC9 /* ViewController.swift */,
+				B5EA44B821AFACD800528AC9 /* MainVC.swift */,
 				B5B103E721B0AEAD003A056C /* RegistryVC.swift */,
 				B5E9259E21B1DEF70095815A /* DataVC.swift */,
+				B55E8C4A22B044BF001C081C /* UsersVC.swift */,
+				B55E8C4C22B04EC7001C081C /* UserTVCC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -304,7 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5EA44B921AFACD800528AC9 /* ViewController.swift in Sources */,
+				B5EA44B921AFACD800528AC9 /* MainVC.swift in Sources */,
 				B5E9259D21B1C90E0095815A /* Loading.swift in Sources */,
 				B5E9259B21B1BDFC0095815A /* UserDataDAO.swift in Sources */,
 				B5B103E821B0AEAD003A056C /* RegistryVC.swift in Sources */,
@@ -312,6 +318,8 @@
 				B5C3A6D521B0F9BA006758D5 /* StringExtension.swift in Sources */,
 				B5E9259F21B1DEF70095815A /* DataVC.swift in Sources */,
 				B5EA44BF21AFACD800528AC9 /* Registro.xcdatamodeld in Sources */,
+				B55E8C4D22B04EC7001C081C /* UserTVCC.swift in Sources */,
+				B55E8C4B22B044BF001C081C /* UsersVC.swift in Sources */,
 				B541740621B1A5130016E972 /* Validations.swift in Sources */,
 				B5EA44B721AFACD800528AC9 /* AppDelegate.swift in Sources */,
 			);
@@ -485,7 +493,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.benfrankv.Registro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -505,7 +513,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.benfrankv.Registro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -105,6 +105,7 @@ class Validations{
         return validacion
     }
     
+    
     func validaCorreo(_ texto : String) -> Bool{
         var validacion = false
         let emailTrial = Trial.email
@@ -118,7 +119,7 @@ class Validations{
         }
         return validacion
     }
-    
+    //revisar repetición
     func validaTelefono(_ texto : String) -> Bool{
         var validacion = false
         let tamano = texto.lengthOfBytes(using: String.Encoding.utf8)
@@ -143,7 +144,7 @@ class Validations{
         }
         return validacion
     }
-    
+    //Revisar
     func alertError(_ mensaje : String) -> SCLAlertViewResponder{
         let alert = SCLAlertView().showTitle("Error", subTitle: mensaje, style: .error, closeButtonTitle: "Aceptar", colorStyle: 0xFF0000, colorTextButton: 0xFFFFFF)
         return alert
