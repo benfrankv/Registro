@@ -17,10 +17,13 @@ class MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        btn_Registry.titleLabel!.font = UIFont(name: "Menlo Regular", size: 24)
-        btn_Users.titleLabel!.font = UIFont(name: "Menlo Regular", size: 24)
+        
+        btn_Registry.tintColor = UIColor.black
+        btn_Users.tintColor = UIColor.black
         btn_Registry.setTitle("registry".localized, for: .normal)
         btn_Users.setTitle("users".localized, for: .normal)
+        btn_Registry.titleLabel!.font = UIFont(name: "Menlo-Regular", size: 24.0)
+        btn_Users.titleLabel!.font = UIFont(name: "Menlo-Regular", size: 24.0)
     }
 
 

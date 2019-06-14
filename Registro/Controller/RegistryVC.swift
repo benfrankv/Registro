@@ -70,7 +70,7 @@ class RegistryVC: UIViewController, UITextFieldDelegate, UIImagePickerController
     }
     
     func applySkyscannerTheme(SkyFloatingLabelTxtfld: SkyFloatingLabelTextField) {
-        SkyFloatingLabelTxtfld.tintColor = UIColor.black
+        SkyFloatingLabelTxtfld.tintColor = UIColor(named: "BlueFranxx")!
         SkyFloatingLabelTxtfld.textColor = UIColor.black
         SkyFloatingLabelTxtfld.lineColor = UIColor.lightGray
         
@@ -103,6 +103,10 @@ class RegistryVC: UIViewController, UITextFieldDelegate, UIImagePickerController
         }
     }
     
+    enum name {
+        
+    }
+    
     func fieldValidate(_ caso : Int16,_ alert : Bool) -> Bool{
         var validation = false
         switch caso {
@@ -114,11 +118,13 @@ class RegistryVC: UIViewController, UITextFieldDelegate, UIImagePickerController
                 txtfld_Name.errorMessage = nil
                 validation = true
             }else if txtfld_Name.text! == "" {
-                self.lbl_Name.text = "\("validations.thename".localized) \("val idations.emptyFieldLbO".localized)"
+                self.lbl_Name.textColor = UIColor(named: "RedFranxx")!
+                self.lbl_Name.text = "\("validations.thename".localized) \("validations.emptyFieldLbO".localized)"
                 txtfld_Name.errorMessage = nil
                 validation = false
             }else{
                 validateTextFieldWithText(text: txtfld_Name.text, tf: txtfld_Name, nameTF: "name".localized)
+                self.lbl_Name.textColor = UIColor(named: "RedFranxx")!
                 self.lbl_Name.text = "\("validations.thename".localized) \("validations.lettersAndSpaces".localized)"
                 validation = false
             }

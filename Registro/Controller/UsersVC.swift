@@ -60,6 +60,12 @@ class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let user = UserDataDAO.search(by: .name, some: usersArr[indexPath.row].name, appDelegate)
+        let fullNameArr = usersArr[indexPath.row].name.components(separatedBy: " ")
+        let name = fullNameArr[0]
+        let user = UserDataDAO.search(by: .name, some: name, appDelegate)
+        print(users_Struct(name: "\(user!.name!) \(user!.firstSurname!) \(user!.secondSurname!)", email: user!.email , cellphone: user!.cellphone, image: UIImage(named: "Franxx")!))
+
     }
 
 }

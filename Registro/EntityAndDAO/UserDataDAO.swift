@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 class UserDataDAO {
     
@@ -56,13 +57,113 @@ class UserDataDAO {
                     userDataList.append(userData)
                 }
             }else{
-                print("Sin usuario")
+                print("Any user")
             }
         }catch{
             
         }
         return userDataList
     }
+    
+    //https://medium.com/@ankurvekariya/core-data-crud-with-swift-4-2-for-beginners-40efe4e7d1cc
+    
+    static func search(by: type, some: String, _ appDelegate: AppDelegate) -> UserDataEntity?{
+        var specificUser: UserDataEntity? = nil
+        var whoat: String = ""
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserData")
+        
+        switch by {
+        case .name:
+            whoat = "name"
+        case .firstSurname:
+            whoat = "firstSurname"
+        case .secondSurname:
+            whoat = "secondSurname"
+        case .email:
+            whoat = "email"
+        case .cellphone:
+            whoat = "cellphone"
+        }
+        
+        request.predicate = NSPredicate(format:"\(whoat) = %@", some)
+        
+        do{
+            let results = try context.fetch(request)
+            let object = results[0] as! NSManagedObject
+            
+            let userData = UserDataEntity()
+            userData.name = object.value(forKey: "name") as? String
+            userData.firstSurname = object.value(forKey: "firstSurname") as? String
+            userData.secondSurname = object.value(forKey: "secondSurname") as? String
+            userData.email = object.value(forKey: "email") as? String
+            userData.cellphone = object.value(forKey: "cellphone") as? String
+            userData.photo = object.value(forKey: "photo") as? Data
+                
+            specificUser = userData
+            
+        }catch{
+            print("Any user")
+        }
+        return specificUser
+        
+    }
+    
+    static func edit(updatedData: userRaw_Struct, _ appDelegate: AppDelegate){
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserData")
+        
+        request.predicate = NSPredicate(format:"name = %@", updatedData.name)
+        
+        do{
+            let results = try context.fetch(request)
+            let object = results[0] as! NSManagedObject
+            
+            object.setValue(updatedData.name, forKey: "name")
+            object.setValue(updatedData.firstSurname, forKey: "firstSurname")
+            object.setValue(updatedData.secondSurname, forKey: "secondSurname")
+            object.setValue(updatedData.email, forKey: "email")
+            object.setValue(updatedData.cellphone, forKey: "cellphone")
+            object.setValue(updatedData.photo, forKey: "photo")
+            
+            do{
+                try context.save()
+                print("Saved UserData")
+            }catch{
+                print("Error UserData")
+            }
+            
+        } catch {
+            print("Error UserData")
+        }
+        
+    }
+    
+    static func delete(who: String, _ appDelegate: AppDelegate){
+        let context = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserData")
+        
+        request.predicate = NSPredicate(format:"name = %@", who)
+        
+        do{
+            let results = try context.fetch(request)
+            let object = results[0] as! NSManagedObject
+            
+            context.delete(object)
+            
+            do{
+                try context.save()
+                print("Deleted UserData")
+            }catch{
+                print("Error UserData")
+            }
+            
+        } catch {
+            print("Error UserData")
+        }
+        
+    }
+    
     
     class func cleanCoreData(_ appDelegate : AppDelegate) {
         
@@ -75,7 +176,7 @@ class UserDataDAO {
             let items = try context.fetch(fetchRequest) as! [NSManagedObject]
             if items.count > 0{
                 context.delete(items.last!)
-                print("Contenido de usuario borrado")
+                print("User Data Eraser")
             }
             
             
@@ -87,4 +188,22 @@ class UserDataDAO {
         }
     }
     
+}
+
+enum type {
+    case name
+    case firstSurname
+    case secondSurname
+    case email
+    case cellphone
+    
+}
+
+struct userRaw_Struct {
+    var name: String
+    var firstSurname: String
+    var secondSurname: String
+    var email: String
+    var cellphone: String
+    var photo: Data?
 }
