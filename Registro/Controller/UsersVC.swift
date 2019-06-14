@@ -10,6 +10,8 @@ import UIKit
 
 struct users_Struct {
     var name: String
+    var firstSurname: String
+    var secondSurname: String
     var email: String
     var cellphone: String
     var image: UIImage
@@ -31,7 +33,7 @@ class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let users = UserDataDAO.get(appDelegate)
         for user in users {
             let imageUser: UIImage! = user.photo == nil ? UIImage(named: "Franxx"): UIImage(data: user.photo!)
-            let newUser = users_Struct(name: "\(user.name!) \(user.firstSurname!) \(user.secondSurname!)", email: user.email , cellphone: user.cellphone, image: imageUser)
+            let newUser = users_Struct(name: user.name, firstSurname: user.firstSurname, secondSurname: user.secondSurname, email: user.email , cellphone: user.cellphone, image: imageUser)
             usersArr.append(newUser)
         }
     }
@@ -51,21 +53,60 @@ class UsersVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! UserTVCC
-        print(usersArr[indexPath.row])
-        cell.lbl_Name.text = usersArr[indexPath.row].name
+//        print(usersArr[indexPath.row])
+        cell.lbl_Name.text = "\(usersArr[indexPath.row].name) \(usersArr[indexPath.row].firstSurname) \(usersArr[indexPath.row].secondSurname)"
         cell.email.text = usersArr[indexPath.row].email
         cell.cellphone.text = usersArr[indexPath.row].cellphone
-        cell.imageView!.image = usersArr[indexPath.row].image
+        cell.img_User.image = usersArr[indexPath.row].image
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let user = UserDataDAO.search(by: .name, some: usersArr[indexPath.row].name, appDelegate)
-        let fullNameArr = usersArr[indexPath.row].name.components(separatedBy: " ")
-        let name = fullNameArr[0]
-        let user = UserDataDAO.search(by: .name, some: name, appDelegate)
-        print(users_Struct(name: "\(user!.name!) \(user!.firstSurname!) \(user!.secondSurname!)", email: user!.email , cellphone: user!.cellphone, image: UIImage(named: "Franxx")!))
+        let name = self.usersArr[indexPath.row].name
+//        let user = UserDataDAO.search(by: .name, some: name, appDelegate)
+//        print(users_Struct(name: user!.name, firstSurname: user!.firstSurname, secondSurname: user!.secondSurname, email: user!.email , cellphone: user!.cellphone, image: UIImage(named: "Franxx")!))
 
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let delete = deleteUser(en: indexPath)
+        return UISwipeActionsConfiguration(actions: [delete])
+        
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let edit = editUser(en: indexPath)
+        return UISwipeActionsConfiguration(actions: [edit])
+        
+    }
+    
+    func editUser(en indexPath: IndexPath) ->UIContextualAction {
+//        let index = indexPath.row
+        let action = UIContextualAction(style: .normal, title: "") { (action, view, completion) in
+            
+            
+        }
+        action.backgroundColor = UIColor.blue
+        
+        return action
+    }
+    
+    func deleteUser(en indexPath: IndexPath) ->UIContextualAction {
+        let action = UIContextualAction(style: .normal, title: "delete".localized) { (action, view, completion) in
+            let name = self.usersArr[indexPath.row].name
+            let _ = UserDataDAO.delete(who: name, self.appDelegate)
+            self.tbv_Users.reloadRows(at: [indexPath], with: .automatic)
+        }
+        action.backgroundColor = UIColor.red
+        
+        return action
+    }
+    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+        print("did end editing")
+        guard let indexPath = indexPath else {return}
+        self.tbv_Users.reloadRows(at: [indexPath], with: .none)
     }
 
 }

@@ -90,18 +90,22 @@ class UserDataDAO {
         
         do{
             let results = try context.fetch(request)
-            let object = results[0] as! NSManagedObject
             
-            let userData = UserDataEntity()
-            userData.name = object.value(forKey: "name") as? String
-            userData.firstSurname = object.value(forKey: "firstSurname") as? String
-            userData.secondSurname = object.value(forKey: "secondSurname") as? String
-            userData.email = object.value(forKey: "email") as? String
-            userData.cellphone = object.value(forKey: "cellphone") as? String
-            userData.photo = object.value(forKey: "photo") as? Data
+            if results.count > 0 {
+                let object = results[0] as! NSManagedObject
                 
-            specificUser = userData
-            
+                let userData = UserDataEntity()
+                userData.name = object.value(forKey: "name") as? String
+                userData.firstSurname = object.value(forKey: "firstSurname") as? String
+                userData.secondSurname = object.value(forKey: "secondSurname") as? String
+                userData.email = object.value(forKey: "email") as? String
+                userData.cellphone = object.value(forKey: "cellphone") as? String
+                userData.photo = object.value(forKey: "photo") as? Data
+                
+                specificUser = userData
+            }else{
+                print("Any user")
+            }
         }catch{
             print("Any user")
         }
@@ -117,22 +121,26 @@ class UserDataDAO {
         
         do{
             let results = try context.fetch(request)
-            let object = results[0] as! NSManagedObject
             
-            object.setValue(updatedData.name, forKey: "name")
-            object.setValue(updatedData.firstSurname, forKey: "firstSurname")
-            object.setValue(updatedData.secondSurname, forKey: "secondSurname")
-            object.setValue(updatedData.email, forKey: "email")
-            object.setValue(updatedData.cellphone, forKey: "cellphone")
-            object.setValue(updatedData.photo, forKey: "photo")
-            
-            do{
-                try context.save()
-                print("Saved UserData")
-            }catch{
+            if results.count > 0 {
+                let object = results[0] as! NSManagedObject
+                
+                object.setValue(updatedData.name, forKey: "name")
+                object.setValue(updatedData.firstSurname, forKey: "firstSurname")
+                object.setValue(updatedData.secondSurname, forKey: "secondSurname")
+                object.setValue(updatedData.email, forKey: "email")
+                object.setValue(updatedData.cellphone, forKey: "cellphone")
+                object.setValue(updatedData.photo, forKey: "photo")
+                
+                do{
+                    try context.save()
+                    print("Saved UserData")
+                }catch{
+                    print("Error UserData")
+                }
+            }else{
                 print("Error UserData")
             }
-            
         } catch {
             print("Error UserData")
         }
@@ -147,17 +155,23 @@ class UserDataDAO {
         
         do{
             let results = try context.fetch(request)
-            let object = results[0] as! NSManagedObject
             
-            context.delete(object)
-            
-            do{
-                try context.save()
-                print("Deleted UserData")
-            }catch{
+            if results.count > 0{
+                ///////////
+                let object = results[0] as! NSManagedObject
+                
+                context.delete(object)
+                
+                do{
+                    try context.save()
+                    print("Deleted UserData")
+                }catch{
+                    print("Error UserData")
+                }
+                ////////
+            }else{
                 print("Error UserData")
             }
-            
         } catch {
             print("Error UserData")
         }

@@ -17,7 +17,7 @@ class UserTVCC: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.img_User.contentMode = .scaleAspectFill
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
